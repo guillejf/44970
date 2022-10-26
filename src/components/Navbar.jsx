@@ -1,61 +1,150 @@
-import React, { useState, useEffect } from "react";
+import AdbIcon from "@mui/icons-material/Adb";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 import CartWidget from "./CartWidget";
 
-export default function Navbar({ conBoton, color, funcionLogin }) {
-  // let colorx = "#dddddd";
+const pages = [
+  { label: "Home", link: "/" },
+  { label: "Carro", link: "/cart" },
+  { label: "Contacto", link: "/contacto" },
+];
 
-  const [colorx, setColorx] = useState("#dddddd");
-  const [cont, setCont] = useState(0);
-  const [categoria, setCategoria] = useState("todas");
+export default function Navbar() {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  //CICLOS DE VIDA EN REACT
-  //NACIMIENTO - MONTAJE o MOUNT // EL PRIMER PINTADO
-  //VIDA - CAMBIOS               // CADA VEZ QUE PINTO O RENDERIZO
-  //MUERTE - DESMONTAJE          // RETIRO EL COMPONENTE
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-  //LISTADO CON FILTRO
-  //FETCH //RECUPERAR DEL LOCAL STORAGE
-  useEffect(() => {
-    //MONTAJE -NACE
-    console.log("pimer render o montaje");
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-    //DESMONTAJE - MUERTE
-    return () => {
-      console.log("muere");
-    };
-  }, []);
-
-  //VIDA Y VA CAMBIANDO
-  useEffect(() => {
-    //array.filter(categoria)
-  }, [categoria]);
-
-  console.log("se ejecuto el componente");
-  console.log("pongo un color" + colorx);
-  console.log("pongo el contador" + cont);
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
-    <div
-      style={{ backgroundColor: colorx }}
-      onClick={() => {
-        //alert(colorx);
-        //colorx = "#000000";
-        setColorx("#000000");
-        //pone el color en negro en la variable
-        //causa el render/pintado/ejecucion/dibuja de nuevo del componente
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
 
-        console.log("cambio el color a #000000");
-      }}
-    >
-      <button
-        onClick={() => {
-          //if....
-          setCont(cont + 1);
-        }}
-      >
-        SUMAR AL CONTADOR: {cont}
-      </button>
-      LOGO
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <a href={page.link}>{page.label}</a>
+                  </Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page) => (
+              <Button
+                key={page.label}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                <a href={page.link}>{page.label}</a>
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <CartWidget />
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
+
+/* import React, { useState, useEffect } from "react";
+import CartWidget from "./CartWidget";
+
+export default function Navbar() {
+  return (
+    <div>
+      BRAND / TITUTLO O NOMBRE DE LA TIENDA
       <ul>
         <li>
           <a href="http://google.com">ir a google</a>
@@ -70,8 +159,8 @@ export default function Navbar({ conBoton, color, funcionLogin }) {
           <a href="http://google.com">ir a google</a>
         </li>
       </ul>
-      {conBoton ? <button onClick={() => funcionLogin()}>LOGIN</button> : null}
       <CartWidget />
     </div>
   );
 }
+ */

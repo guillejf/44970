@@ -1,10 +1,5 @@
 import React from "react";
+import "./ItemListContainer";
 export default function ItemListContainer({ greeting }) {
-  /* function onadd */
-  return (
-    <div>
-      {greeting}
-      {/* ITEMCOUNT STOCK ONADD */}
-    </div>
-  );
+  return <div className="algoLocal">{greeting}</div>;
 }
