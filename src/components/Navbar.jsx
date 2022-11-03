@@ -14,7 +14,7 @@ import CartWidget from "./CartWidget";
 
 const pages = [
   { label: "Home", link: "/" },
-  { label: "Carro", link: "/cart" },
+  { label: "Checkout", link: "/checkout" },
   { label: "Contacto", link: "/contacto" },
 ];
 

@@ -3,16 +3,29 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./App.css";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import Checkout from "./components/Checkout";
+import Contacto from "./components/Contacto";
 
 export default function App() {
   return (
-    <div>
+    <BrowserRouter>
+      {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS */}
       <Navbar />
-      <ItemListContainer greeting={"hola chiques!"} />
+      {/* ACA DECLARO RUTAS PUNTUALES */}
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route />
+        <Route />
+        <Route />
+      </Routes>
+      {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS ABAJO DE TODO*/}
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
