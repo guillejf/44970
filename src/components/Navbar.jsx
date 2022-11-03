@@ -11,11 +11,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const pages = [
   { label: "Home", link: "/" },
   { label: "Checkout", link: "/checkout" },
   { label: "Contacto", link: "/contacto" },
+  { label: "deportes", link: "/category/deportes" },
+  { label: "fiesta", link: "/category/fiesta" },
 ];
 
 export default function Navbar() {
@@ -124,7 +127,7 @@ export default function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <a href={page.link}>{page.label}</a>
+                <Link to={page.link}>{page.label}</Link>
               </Button>
             ))}
           </Box>
