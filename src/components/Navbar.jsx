@@ -19,6 +19,7 @@ const pages = [
   { label: "Contacto", link: "/contacto" },
   { label: "deportes", link: "/category/deportes" },
   { label: "fiesta", link: "/category/fiesta" },
+  { label: "test", link: "/test" },
 ];
 
 export default function Navbar() {
@@ -95,7 +96,7 @@ export default function Navbar() {
               {pages.map((page) => (
                 <MenuItem key={page.label} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <a href={page.link}>{page.label}</a>
+                    <Link to={page.link}>{page.label}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -140,30 +141,3 @@ export default function Navbar() {
     </AppBar>
   );
 }
-
-/* import React, { useState, useEffect } from "react";
-import CartWidget from "./CartWidget";
-
-export default function Navbar() {
-  return (
-    <div>
-      BRAND / TITUTLO O NOMBRE DE LA TIENDA
-      <ul>
-        <li>
-          <a href="http://google.com">ir a google</a>
-        </li>
-        <li>
-          <a href="http://google.com">ir a google</a>
-        </li>
-        <li>
-          <a href="http://google.com">ir a google</a>
-        </li>
-        <li>
-          <a href="http://google.com">ir a google</a>
-        </li>
-      </ul>
-      <CartWidget />
-    </div>
-  );
-}
- */

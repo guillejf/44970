@@ -1,23 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./ItemListContainer";
+import { productosHC } from "./data.js";
+import ItemList from "./ItemList";
 export default function ItemListContainer({ greeting }) {
   const { idcategory } = useParams();
 
   const [productos, setProductos] = useState([]);
-  let productosHC = [
-    { id: 100, name: "pelota", category: "deportes", precio: 100 },
-    { id: 101, name: "arco", category: "deportes", precio: 100 },
-    { id: 102, name: "pantalon", category: "deportes", precio: 100 },
-    { id: 103, name: "vestido lola", category: "fiesta", precio: 200 },
-    {
-      id: 104,
-      name: "cartera con diamantes",
-      category: "fiesta",
-      precio: 1000,
-    },
-  ];
 
   useEffect(() => {
     // alert("cambio la categoria por eso salta de nuevo este efecto");
@@ -37,15 +27,8 @@ export default function ItemListContainer({ greeting }) {
   }, [idcategory]);
 
   return (
-    <div>
-      {!productos.length && "Loading..."}
-      {productos.map((item) => (
-        <div key={item.id}>
-          {JSON.stringify(item)}
-          <br />
-          <br />
-        </div>
-      ))}
+    <div style={{ border: "2px solid red", margin: "10px" }}>
+      <ItemList productos={productos} />;
     </div>
   );
 }
