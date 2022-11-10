@@ -12,27 +12,30 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 
 import Navbar from "./components/Navbar";
 import TestEventos from "./components/test/TestEventos";
+import ContextContainer from "./components/ContextContainer";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS */}
-      <Navbar />
-      {/* ACA DECLARO RUTAS PUNTUALES */}
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/category/:idcategory" element={<ItemListContainer />} />
-        <Route path="/item/:iditem" element={<ItemDetailContainer />} />
-        <Route path="/test" element={<TestEventos />} />
-        {/* <Route path="/item/:iditem" element={<ItemDetailContainer />} /> */}
-        <Route />
-        <Route />
-        <Route />
-      </Routes>
-      {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS ABAJO DE TODO*/}
-      <Footer />
-    </BrowserRouter>
+    <ContextContainer>
+      <BrowserRouter>
+        {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS */}
+        <Navbar />
+        {/* ACA DECLARO RUTAS PUNTUALES */}
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/category/:idcategory" element={<ItemListContainer />} />
+          <Route path="/item/:iditem" element={<ItemDetailContainer />} />
+          <Route path="/test" element={<TestEventos />} />
+          {/* <Route path="/item/:iditem" element={<ItemDetailContainer />} /> */}
+          <Route />
+          <Route />
+          <Route />
+        </Routes>
+        {/* PONGO COMPONENTES QUE QUIERO QUE ESTEN EN TODAS LAS RUTAS ABAJO DE TODO*/}
+        <Footer />
+      </BrowserRouter>
+    </ContextContainer>
   );
 }

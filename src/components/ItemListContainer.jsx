@@ -4,7 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import "./ItemListContainer";
 import { productosHC } from "./data.js";
 import ItemList from "./ItemList";
-export default function ItemListContainer({ greeting }) {
+
+export default function ItemListContainer() {
   const { idcategory } = useParams();
 
   const [productos, setProductos] = useState([]);

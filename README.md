@@ -1,32 +1,15 @@
-From Lucas Ezequiel Cascardo to Everyone 09:40 PM
-🙌
-From Cristian Flores to Everyone 09:40 PM
-✋🏾
-From Andrés Aguiar to Everyone 09:40 PM
-🙌
-From Leandro Nazar to Everyone 09:40 PM
-está la 2da entrega, se complica.. jajaja
-From Ignacio Gonzalez Sorribas to Everyone 09:40 PM
-👍🏻
-From Manuel Cacalano Vidal to Everyone 09:40 PM
-🤲
-From Mauro Garro to Everyone 09:40 PM
-🖐
-From Lautaro Giambartolomei to Everyone 09:40 PM
-🤚
-From Nicolas Caporaso to Everyone 09:40 PM
-🤏
-From Luca March Ficarra to Everyone 09:40 PM
-👏
-From Nicolas Rosado to Everyone 09:40 PM
-🤚
-From maximiliano parisi to Everyone 09:40 PM
-yooooo jajaj
-From Rommel Morales Kolster to Everyone 09:40 PM
-✋
-From Eliecer Riquelme to Everyone 09:40 PM
-Acá👍
-From Ivan Pugliese to Everyone 09:40 PM
-👐
-From Agustina Palmarocchi to Everyone 09:40 PM
-🖐
+//REALIDAD
+para compartir datos globales entre todos los componentes
+\*\*\*sin usar las props!!!!!! salteando los componentes que no los necesitan...
+
+yendo directo del abuelo al nieto o tataranieto salteando al padre...
+
+variables globales que tienen un provider y un consumer
+y que se pueden usar con Hooks o clases (this)...
+
+Ignacio que era como una base de datos donde pones toda la info
+y cada componente puede meterse ahi y sacar lo que necesite para su
+componente.
+
+Codigo es muy abstracto.
+Dificil de codear.

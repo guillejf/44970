@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { contextoGeneral } from "../components/ContextContainer";
 
 export default function ItemCount({ ini, max, addItem }) {
+  const { darkMode, setdarkMode } = useContext(contextoGeneral);
   const [count, setCount] = useState(ini);
   function restar() {
     if (count >= 2) {
