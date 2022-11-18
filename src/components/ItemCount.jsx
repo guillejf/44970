@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
-import { contextoGeneral } from "../components/ContextContainer";
+import React, { useState, useContext } from 'react';
 
-export default function ItemCount({ ini, max, addItem }) {
-  const { darkMode, setdarkMode } = useContext(contextoGeneral);
+export default function ItemCount({ ini, max, onAdd }) {
   const [count, setCount] = useState(ini);
   function restar() {
     if (count >= 2) {
@@ -22,7 +20,7 @@ export default function ItemCount({ ini, max, addItem }) {
       {count}
       <button onClick={sumar}>+</button>
       <br />
-      <button onClick={() => addItem(count)}>AGREGAR</button>
+      <button onClick={() => onAdd(count)}>AGREGAR</button>
     </div>
   );
 }

@@ -1,26 +1,32 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext } from 'react';
+import { useEffect } from 'react';
 
 export const contextoGeneral = createContext();
 
 export default function ContextContainer({ children }) {
-  const [darkMode, setdarkMode] = useState(false);
-  const x = 10;
-  function algo() {}
+  const [carrito, setCarrito] = useState([]);
 
-  /* 
-  const [carrito, set carrito] = useState([]);
-  
-  function addItem(item, quantity) // agregar cierta cantidad de un ítem al carrito
-function removeItem(itemId) // Remover un item del cart por usando su id
-function clear() // Remover todos los items
-function isInCart: (id) => true|false 
+  function posInCart(id) {
+    const pos = carrito.findIndex((item) => item.id == id);
+    return pos;
+  }
 
-<contextoGeneral.Provider value={{ addItem, removeItem, clear, isInCart }}>
-*/
+  function addItem(item, quantity) {
+    const pos = posInCart(item.id);
+    if (pos == -1) {
+      setCarrito([...carrito, { ...item, quantity }]);
+    } else {
+      const carritoAux = [...carrito];
+      carritoAux[pos] = { ...carritoAux[pos], quantity: carritoAux[pos].quantity + quantity };
+      setCarrito(carritoAux);
+    }
+  }
+  function removeItem(id) {
+    setCarrito(carrito.filter((product) => product.id !== id));
+  }
+  function clear() {
+    setCarrito([]);
+  }
 
-  return (
-    <contextoGeneral.Provider value={{ darkMode, setdarkMode, x, algo }}>
-      {children}
-    </contextoGeneral.Provider>
-  );
+  return <contextoGeneral.Provider value={{ carrito, addItem, removeItem, clear }}>{children}</contextoGeneral.Provider>;
 }
